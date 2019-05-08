@@ -12,3 +12,6 @@ vector:
 
 map:
 	g++ -o map map.cpp -std=c++11
+
+anograms:
+	g++ -o anograms anograms.cpp -std=c++11
