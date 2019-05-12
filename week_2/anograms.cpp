@@ -45,9 +45,7 @@ map<char,int> MakeMap(string s){
 void IsAnogramm(const vector<vector<string>>& v){
 	map<char,int> first, second;
 	for(const auto& item : v){
-		first = MakeMap(item[0]);
-		second = MakeMap(item[1]);
-		if(first == second){
+		if(MakeMap(item[0]) == MakeMap(item[1])){
 			cout << "YES" << endl;
 		}
 		else{
