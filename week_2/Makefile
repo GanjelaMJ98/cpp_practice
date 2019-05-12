@@ -15,3 +15,6 @@ map:
 
 anograms:
 	g++ -o anograms anograms.cpp -std=c++11
+
+set:
+	g++ -o set set.cpp -std=c++11

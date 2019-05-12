@@ -20,7 +20,6 @@ vector<int> temperature(const vector<int>& days){
 			v.push_back(i);
 		}
 	} 
-	
 	return v;
 }
 
@@ -35,7 +34,7 @@ int main(){
 	}
 
 	temp = temperature(days);
-	
+
 	cout << temp.size() << endl;
 	for(auto x: temp){
 		cout << x << " ";
