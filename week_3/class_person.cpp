@@ -8,15 +8,30 @@ using namespace std;
 
 class Person{
 public:
+	Person(const string& f_name, const string& l_name, const int& y){
+		ChangeFirstName(y,f_name);
+		ChangeLastName(y,l_name);
+		birth = y;
+	}
 	void ChangeFirstName(int year, const string& first_name){
+		if(year < birth){
+			return;
+		}
 		map_first_name[year] = first_name;
 	}
 
 	void ChangeLastName(int year, const string& last_name){
+		if(year < birth){
+			return ;
+		}
 		map_last_name[year] = last_name;
 	}
 
 	string GetFullName(int year){
+		if(year < birth){
+			return "No person";
+		}
+
 		string ans = "";
 
 		string f_name = GetName(year, map_first_name);
@@ -42,6 +57,10 @@ public:
 	}
 
 	string GetFullNameWithHistory(int year){
+		if(year < birth){
+			return "No person";
+		}
+
 		string ans = "";
 
 		string f_name = GetName(year, map_first_name);
@@ -67,6 +86,7 @@ public:
 
 	}
 private:
+	int birth;
 	map<int, string> map_first_name;
 	map<int, string> map_last_name;
 
@@ -102,40 +122,16 @@ private:
 };
 
 int main(){
-	//part 1
-	Person person;
-	person.ChangeFirstName(1965,"Polina");
-	person.ChangeLastName(1967,"Sergeeva");
-	for(int year : {1900,1965,1990}){
-		cout << person.GetFullName(year) << endl;
-	}
-
-	person.ChangeFirstName(1970, "Appolinaria");
-	for(int year : {1969,1970}){
-		cout << person.GetFullName(year) << endl;
-	}
-
-	person.ChangeLastName(1968, "Volkova");
-	for(int year : {1969,1970}){
-		cout << person.GetFullName(year) << endl;
-	}
-	cout << endl;
-	
-	//part 2
-	person.ChangeFirstName(1990, "Polina");
-	person.ChangeLastName(1990, "Volkova-Sergeeva");
-	cout << person.GetFullNameWithHistory(1990) << endl;
-
-	person.ChangeFirstName(1966, "Pauline");
-	cout << person.GetFullNameWithHistory(1966) << endl;
-
-	person.ChangeLastName(1960, "Sergeeva");
-	for(int year: {1960,1967}){
+	Person person("Polina", "Sergeeva", 1960);
+	for(int year: {1959, 1960}){
 		cout << person.GetFullNameWithHistory(year) << endl;
 	}
 
-	person.ChangeLastName(1961, "Ivanova");
-	cout << person.GetFullNameWithHistory(1967) << endl;
+	person.ChangeFirstName(1965, "Appolinaria");
+	person.ChangeLastName(1967, "Ivanova");
+	for(int year: {1965, 1967}){
+		cout << person.GetFullNameWithHistory(year) << endl;
+	}
 
 	return 0;
 }
