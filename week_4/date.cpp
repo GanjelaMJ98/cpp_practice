@@ -52,7 +52,7 @@ int main(){
 	PrintDate(date);
 
 	//explicit
-	//Date date_error({19}, {09}, {1998});
-	//Date error(19, 9, 1998);
+	//Date date({19}, {09}, {1998});	- ERROR
+	//Date date(19, 9, 1998);			- ERROR
 	return 0;
 }
